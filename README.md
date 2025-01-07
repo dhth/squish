@@ -22,14 +22,14 @@ cargo install --git https://github.com/dhth/squish.git
 ### Help
 
 ```text
-Usage: squish [OPTIONS] <STRING>
+Usage: squish [OPTIONS] <INPUT>
 
 Arguments:
-  <STRING>  Local file path, or "cb" for system clipboard
+  <INPUT>  Local file path, or "cb" for system clipboard
 
 Options:
   -w, --width <INTEGER>         Width of resized image [default: 800]
-  -o, --output-file <STRING>    Destination of resized output file
+  -o, --output-file <FILE>      Destination of resized output file
   -c, --copy-to-clipboard       Whether to copy resized image to clipboard (only supported for PNG images)
   -v, --verbose                 Whether to print updates
   -m, --print-markdown-address  Whether to print address of output file in markdown format

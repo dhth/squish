@@ -17,14 +17,14 @@ const RESIZE_WIDTH_LOWER_THRESHOLD: u32 = 20;
 #[command(about, long_about=None)]
 struct Args {
     /// Local file path, or "cb" for system clipboard
-    #[arg(value_name = "STRING")]
+    #[arg(value_name = "INPUT")]
     source: String,
     /// Width of resized image
     #[arg(short = 'w', long = "width", value_name = "INTEGER")]
     #[clap(default_value_t = DEFAULT_RESIZE_WIDTH)]
     width: u32,
     /// Destination of resized output file
-    #[arg(short = 'o', long = "output-file", value_name = "STRING")]
+    #[arg(short = 'o', long = "output-file", value_name = "FILE")]
     destination: Option<String>,
     /// Whether to copy resized image to clipboard (only supported for PNG images)
     #[arg(short = 'c', long = "copy-to-clipboard", value_name = "BOOLEAN")]

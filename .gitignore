@@ -4,3 +4,4 @@ justfile
 test
 output
 demo.gif
+screenshots
