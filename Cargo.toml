@@ -1,0 +1,14 @@
+[package]
+name = "squish"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.94"
+arboard = "3.4.1"
+bytes = "1.7.2"
+clap = { version = "4.5.23", features = ["derive"] }
+colored = "3.0.0"
+image = "0.25.3"
+infer = "0.16.0"
+tempfile = "3.14.0"
