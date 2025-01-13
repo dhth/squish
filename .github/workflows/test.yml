@@ -1,0 +1,30 @@
+name: test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    paths:
+      - "*Cargo.*"
+      - "**/*.rs"
+      - ".github/workflows/test.yml"
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  live-tests:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install toolchain
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install
+        run: cargo install --path .
+      - name: Run live tests
+        run: |
+          cd tests
+          ./test.sh
