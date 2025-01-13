@@ -131,7 +131,7 @@ impl ValidImage {
         }
     }
 
-    pub(crate) fn get_resized_version(&self, width: u32) -> Self {
+    pub(crate) fn get_resized_version(&self, width: u32, blur_strength: u8) -> Self {
         let old_h = self.image.height() as f32;
         let ratio = width as f32 / self.width() as f32;
         let new_h = (old_h * ratio).ceil() as u32;
@@ -140,9 +140,15 @@ impl ValidImage {
             .image
             .resize(width, new_h, image::imageops::FilterType::Lanczos3);
 
-        Self {
-            image: resized,
-            format: self.format,
+        match blur_strength {
+            0 => Self {
+                image: resized,
+                format: self.format,
+            },
+            strength => Self {
+                image: resized.blur(strength as f32),
+                format: self.format,
+            },
         }
     }
 

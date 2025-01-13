@@ -28,12 +28,13 @@ Arguments:
   <INPUT>  Local file path, or "cb" for system clipboard
 
 Options:
-  -w, --width <INTEGER>         Width of resized image [default: 800]
-  -o, --output-file <FILE>      Destination of resized output file
-  -c, --copy-to-clipboard       Whether to copy resized image to clipboard (only supported for PNG images)
-  -v, --verbose                 Whether to print updates
-  -m, --print-markdown-address  Whether to print address of output file in markdown format
-  -h, --help                    Print help
+  -w, --width <INTEGER>          Width of resized image [default: 800]
+  -o, --output-file <FILE>       Destination of resized output file
+  -c, --copy-to-clipboard        Whether to copy resized image to clipboard (only supported for PNG images)
+  -b, --blur-strength <INTEGER>  Blur strength [default: 0]
+  -v, --verbose                  Whether to print updates
+  -m, --print-markdown-address   Whether to print address of output file in markdown format
+  -h, --help                     Print help
 ```
 
 ### Basic Usage

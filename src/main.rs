@@ -29,6 +29,14 @@ struct Args {
     /// Whether to copy resized image to clipboard (only supported for PNG images)
     #[arg(short = 'c', long = "copy-to-clipboard", value_name = "BOOLEAN")]
     copy_to_clipboard: bool,
+    /// Blur strength
+    #[arg(
+        short = 'b',
+        long = "blur-strength",
+        value_name = "INTEGER",
+        default_value = "0"
+    )]
+    blur_strength: u8,
     /// Whether to print updates
     #[arg(short = 'v', long = "verbose", default_value = "false")]
     verbose: bool,
@@ -97,7 +105,7 @@ fn main() -> anyhow::Result<()> {
     }
 
     // resizing
-    let resized_image = image.get_resized_version(args.width);
+    let resized_image = image.get_resized_version(args.width, args.blur_strength);
 
     // outputs
     if args.verbose {
