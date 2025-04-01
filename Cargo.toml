@@ -9,7 +9,7 @@ arboard = "3.4.1"
 bytes = "1.10.0"
 clap = { version = "4.5.29", features = ["derive"] }
 colored = "3.0.0"
-image = "0.25.3"
+image = "0.25.6"
 infer = "0.19.0"
 tempfile = "3.17.1"
 
