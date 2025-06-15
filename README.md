@@ -1,7 +1,9 @@
-# squish
-
-✨ Overview
----
+<p align="center">
+  <h1 align="center">squish</h1>
+  <p align="center">
+    <a href="https://github.com/dhth/squish/actions/workflows/main.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/dhth/squish/main.yml?style=flat-square"></a>
+  </p>
+</p>
 
 `squish` lets you resize images via the command line.
 
