@@ -210,9 +210,7 @@ impl TryFrom<&[u8]> for ValidImage {
     fn try_from(bytes: &[u8]) -> Result<Self, Self::Error> {
         let reader = ImageReader::new(Cursor::new(bytes))
             .with_guessed_format()
-            .context(format!(
-                "something went wrong; {UNEXPECTED_ERROR_MESSAGE}"
-            ))?;
+            .context(format!("something went wrong; {UNEXPECTED_ERROR_MESSAGE}"))?;
 
         let format = reader
             .format()
