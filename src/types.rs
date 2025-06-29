@@ -40,8 +40,7 @@ impl TryFrom<&str> for ValidFile {
             ));
         }
         let bytes = std::fs::read(path_str).context(format!(
-            "couldn't read file contents; {}",
-            UNEXPECTED_ERROR_MESSAGE
+            "couldn't read file contents; {UNEXPECTED_ERROR_MESSAGE}"
         ))?;
 
         Ok(Self { bytes })
@@ -162,8 +161,7 @@ impl ValidImage {
         self.image
             .write_to(&mut writer, self.get_image_format())
             .context(format!(
-                "couldn't write to output file; {}",
-                UNEXPECTED_ERROR_MESSAGE
+                "couldn't write to output file; {UNEXPECTED_ERROR_MESSAGE}"
             ))?;
 
         Ok(())
@@ -212,10 +210,7 @@ impl TryFrom<&[u8]> for ValidImage {
     fn try_from(bytes: &[u8]) -> Result<Self, Self::Error> {
         let reader = ImageReader::new(Cursor::new(bytes))
             .with_guessed_format()
-            .context(format!(
-                "something went wrong; {}",
-                UNEXPECTED_ERROR_MESSAGE
-            ))?;
+            .context(format!("something went wrong; {UNEXPECTED_ERROR_MESSAGE}"))?;
 
         let format = reader
             .format()

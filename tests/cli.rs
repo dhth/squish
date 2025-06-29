@@ -45,7 +45,7 @@ fn cli_works_when_width_provided() {
     // THEN
     if !output.status.success() {
         let stderr = String::from_utf8(output.stderr).expect("invalid utf-8 stderr");
-        println!("stderr: \n{}", stderr);
+        println!("stderr: \n{stderr}");
     }
     assert!(output.status.success());
 }
@@ -61,7 +61,7 @@ fn cli_works_when_blurring_requested() {
     // THEN
     if !output.status.success() {
         let stderr = String::from_utf8(output.stderr).expect("invalid utf-8 stderr");
-        println!("stderr: \n{}", stderr);
+        println!("stderr: \n{stderr}");
     }
     assert!(output.status.success());
 }
@@ -77,7 +77,7 @@ fn cli_works_when_verbose_output_requested() {
     // THEN
     if !output.status.success() {
         let stderr = String::from_utf8(output.stderr).expect("invalid utf-8 stderr");
-        println!("stderr: \n{}", stderr);
+        println!("stderr: \n{stderr}");
     }
     assert!(output.status.success());
     let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
@@ -99,7 +99,7 @@ fn cli_works_when_markdown_address_requested() {
     // THEN
     if !output.status.success() {
         let stderr = String::from_utf8(output.stderr).expect("invalid utf-8 stderr");
-        println!("stderr: \n{}", stderr);
+        println!("stderr: \n{stderr}");
     }
     assert!(output.status.success());
     let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
@@ -120,7 +120,7 @@ fn cli_works_when_several_flags_are_provided() {
     // THEN
     if !output.status.success() {
         let stderr = String::from_utf8(output.stderr).expect("invalid utf-8 stderr");
-        println!("stderr: \n{}", stderr);
+        println!("stderr: \n{stderr}");
     }
     assert!(output.status.success());
     let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
@@ -146,7 +146,7 @@ fn cli_fails_if_file_non_existent() {
     // THEN
     if output.status.success() {
         let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
-        println!("stdout: \n{}", stdout);
+        println!("stdout: \n{stdout}");
     }
     assert!(!output.status.success());
     let stderr = String::from_utf8(output.stderr).expect("invalid utf-8 stderr");
@@ -165,7 +165,7 @@ fn cli_fails_if_incorrect_file_provided() {
     // THEN
     if output.status.success() {
         let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
-        println!("stdout: \n{}", stdout);
+        println!("stdout: \n{stdout}");
     }
     assert!(!output.status.success());
     let stderr = String::from_utf8(output.stderr).expect("invalid utf-8 stderr");
@@ -183,7 +183,7 @@ fn cli_fails_when_incorrect_width_provided() {
     // THEN
     if output.status.success() {
         let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
-        println!("stdout: \n{}", stdout);
+        println!("stdout: \n{stdout}");
     }
     assert!(!output.status.success());
 }
@@ -199,7 +199,7 @@ fn cli_fails_when_incorrect_blur_strength_provided() {
     // THEN
     if output.status.success() {
         let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
-        println!("stdout: \n{}", stdout);
+        println!("stdout: \n{stdout}");
     }
     assert!(!output.status.success());
 }
@@ -215,7 +215,7 @@ fn cli_fails_when_negative_blur_strength_provided() {
     // THEN
     if output.status.success() {
         let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
-        println!("stdout: \n{}", stdout);
+        println!("stdout: \n{stdout}");
     }
     assert!(!output.status.success());
 }
@@ -231,7 +231,7 @@ fn cli_fails_when_blur_strength_exceeds_upper_threshold() {
     // THEN
     if output.status.success() {
         let stdout = String::from_utf8(output.stdout).expect("invalid utf-8 stdout");
-        println!("stdout: \n{}", stdout);
+        println!("stdout: \n{stdout}");
     }
     assert!(!output.status.success());
 }
