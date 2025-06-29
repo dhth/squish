@@ -152,7 +152,7 @@ fn main() -> anyhow::Result<()> {
 
     if args.print_output_address_in_md {
         if let Some(dest) = &args.destination {
-            println!("![image]({})", dest);
+            println!("![image]({dest})");
         }
     }
 
