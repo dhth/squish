@@ -1,18 +1,16 @@
-use std::process::Command;
+mod common;
 
-use insta_cmd::{assert_cmd_snapshot, get_cargo_bin};
+use insta_cmd::assert_cmd_snapshot;
 
-fn base_command() -> Command {
-    Command::new(get_cargo_bin("squish"))
-}
+use common::Fixture;
 
 // SUCCESSES
 
 #[test]
 fn cli_shows_help() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args(["--help"]);
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd(["--help"]);
 
     // WHEN
     // THEN
@@ -43,8 +41,8 @@ fn cli_shows_help() {
 #[test]
 fn cli_works_for_local_file() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args(["tests/input.png", "--output-file", "/var/tmp/output.png"]);
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd(["tests/input.png", "--output-file", "/var/tmp/output.png"]);
 
     // WHEN
     // THEN
@@ -60,8 +58,8 @@ fn cli_works_for_local_file() {
 #[test]
 fn cli_works_when_width_provided() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -83,8 +81,8 @@ fn cli_works_when_width_provided() {
 #[test]
 fn cli_works_when_blurring_requested() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -106,8 +104,8 @@ fn cli_works_when_blurring_requested() {
 #[test]
 fn cli_works_when_verbose_output_requested() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -131,8 +129,8 @@ fn cli_works_when_verbose_output_requested() {
 #[test]
 fn cli_works_when_markdown_address_requested() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -154,8 +152,8 @@ fn cli_works_when_markdown_address_requested() {
 #[test]
 fn cli_works_when_several_flags_are_provided() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -187,8 +185,8 @@ fn cli_works_when_several_flags_are_provided() {
 #[test]
 fn cli_fails_if_file_non_existent() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args(["tests/absent.png", "--output-file", "/var/tmp/output.png"]);
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd(["tests/absent.png", "--output-file", "/var/tmp/output.png"]);
 
     // WHEN
     // THEN
@@ -208,8 +206,8 @@ fn cli_fails_if_file_non_existent() {
 #[test]
 fn cli_fails_if_incorrect_file_provided() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args(["Cargo.toml", "--output-file", "/var/tmp/output.png"]);
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd(["Cargo.toml", "--output-file", "/var/tmp/output.png"]);
 
     // WHEN
     // THEN
@@ -226,8 +224,8 @@ fn cli_fails_if_incorrect_file_provided() {
 #[test]
 fn cli_fails_when_incorrect_width_provided() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -252,8 +250,8 @@ fn cli_fails_when_incorrect_width_provided() {
 #[test]
 fn cli_fails_when_incorrect_blur_strength_provided() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -278,8 +276,8 @@ fn cli_fails_when_incorrect_blur_strength_provided() {
 #[test]
 fn cli_fails_when_negative_blur_strength_provided() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
@@ -308,8 +306,8 @@ fn cli_fails_when_negative_blur_strength_provided() {
 #[test]
 fn cli_fails_when_blur_strength_exceeds_upper_threshold() {
     // GIVEN
-    let mut base_cmd = base_command();
-    let mut cmd = base_cmd.args([
+    let fx = Fixture::new();
+    let mut cmd = fx.cmd([
         "tests/input.png",
         "--output-file",
         "/var/tmp/output.png",
