@@ -6,7 +6,7 @@ license = "MIT"
 
 [dependencies]
 anyhow = "1.0.98"
-arboard = "3.6.0"
+arboard = "3.6.1"
 bytes = "1.10.1"
 clap = { version = "4.5.43", features = ["derive"] }
 colored = "3.0.0"
