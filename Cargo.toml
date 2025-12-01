@@ -8,9 +8,9 @@ license = "MIT"
 anyhow = "1.0.100"
 arboard = "3.6.1"
 bytes = "1.10.1"
-clap = { version = "4.5.51", features = ["derive"] }
+clap = { version = "4.5.53", features = ["derive"] }
 colored = "3.0.0"
-image = "0.25.8"
+image = "0.25.9"
 infer = "0.19.0"
 tempfile = "3.23.0"
 
