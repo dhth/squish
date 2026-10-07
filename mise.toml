@@ -1,0 +1,102 @@
+[settings]
+idiomatic_version_file_enable_tools = ["rust"]
+task.run_auto_install = false
+
+[tools]
+actionlint = "latest"
+cargo-deny = "latest"
+cargo-dist = "0.33.0"
+# Keep this version in sync with the insta dependency in Cargo.toml.
+cargo-insta = "1.49.0"
+yamlfmt = "latest"
+
+[tasks.all]
+alias = "a"
+description = "Format, lint, build and test"
+run = [
+    { task = "fmt" },
+    { task = "lint" },
+    { task = "build" },
+    { task = "test" },
+]
+
+[tasks.build]
+alias = "b"
+description = "Build the application"
+run = "cargo build"
+
+[tasks.check]
+alias = "c"
+description = "Check all targets"
+run = "cargo check --all-targets"
+
+[tasks.deny]
+alias = "d"
+description = "Audit dependencies"
+run = "cargo deny check"
+
+[tasks.fmt]
+alias = "f"
+description = "Format Rust source files"
+run = "cargo fmt --all"
+
+[tasks."fmt:check"]
+alias = ["fc", "fmt-check"]
+description = "Check Rust source formatting"
+run = "cargo fmt --all -- --check"
+
+[tasks.install]
+alias = "i"
+description = "Install the application"
+run = "cargo install --path ."
+
+[tasks.lint]
+alias = "l"
+description = "Lint all targets"
+run = "cargo clippy --all-targets"
+
+[tasks."lint:fix"]
+alias = ["lf", "lint-fix"]
+description = "Apply Clippy fixes"
+run = "cargo clippy --fix --allow-dirty --allow-staged"
+
+[tasks."publish:dry"]
+alias = "publish-dry"
+description = "Check packaging without publishing"
+run = "cargo publish --dry-run --allow-dirty"
+
+[tasks.run]
+alias = "r"
+description = "Run the application"
+raw_args = true
+run = "cargo run --"
+
+[tasks.test]
+alias = "t"
+description = "Run all tests"
+raw_args = true
+run = "cargo test"
+
+[tasks."update-snapshots"]
+alias = "us"
+description = "Update test snapshots"
+run = "cargo insta test --accept"
+
+[tasks."review-snapshots"]
+alias = ["re", "review"]
+description = "Review pending test snapshots"
+run = "cargo insta review"
+
+[tasks."lint:actions"]
+description = "Lint GitHub Actions workflows"
+run = "actionlint"
+
+[tasks."lint:yaml"]
+description = "Lint YAML files"
+run = '''
+yamlfmt \
+    -lint \
+    -quiet \
+    -formatter 'retain_line_breaks_single=true' \
+    $(git ls-files '*.yml' '*.yaml')
+'''
